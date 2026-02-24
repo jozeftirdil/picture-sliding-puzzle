@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamestudio</title>
+    <link rel="stylesheet" href="/css/styleResponsive.css"/>
+</head>
+<body>
+
+<div th:replace="fragments/fragments::header"></div><br>
+
+<h2><a href="/puzzle">Picture Sliding Puzzle</a></h2>
+
+<span th:if="not ${@userController.logged}">
+    Please log in to set rating and comment.  <a href="/">Login</a><br/>
+</span><br>
+
+<h2>Rating</h2>
+Average rating: <span th:text="${avgrating}"/>/5<br/>
+<span th:if="${@userController.logged}">
+    Your rating: <span th:text="${rating}"></span>/5<br/>
+</span><br>
+
+<form th:if="${@userController.logged}" action="/puzzle/rate" method="post">
+    Rating:
+    <select name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <br/>
+    <input type="submit"/>
+</form>
+
+</span>
+
+<h2>Comments</h2>
+<table class="scores">
+    <thead>
+    <tr>
+        <th>Player</th>
+        <th>Comment</th>
+        <th>Commented on</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="comment: ${comments}">
+        <td th:text="${comment.player}"></td>
+        <td th:text="${comment.comment}"></td>
+        <td th:text="${comment.commentedOn}"></td>
+    </tr>
+    </tbody>
+</table><br>
+
+<form th:if="${@userController.logged}" action="/puzzle/comment" method="post">
+    Comment: <input type="text" name="comment"/><br/>
+    <input type="submit"/>
+</form>
+
+<div th:replace="fragments/fragments::footer"></div>
+
+</body>
+</html>

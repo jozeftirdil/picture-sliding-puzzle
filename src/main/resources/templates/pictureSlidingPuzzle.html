@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamestudio</title>
+    <link rel="stylesheet" href="/css/styleResponsive.css"/>
+</head>
+<body>
+
+<div th:replace="fragments/fragments::header"></div><br>
+
+<h2>Picture Sliding Puzzle</h2>
+
+<form action="/puzzle/new" method="get">
+    <label for="size">Field size:</label>
+    <select name="size" id="size">
+        <option th:value="3" th:selected="${fieldSize == 3}">3×3</option>
+        <option th:value="4" th:selected="${fieldSize == 4}">4×4</option>
+        <option th:value="5" th:selected="${fieldSize == 5}">5×5</option>
+        <option th:value="6" th:selected="${fieldSize == 6}">6×6</option>
+    </select>
+    <button type="submit">Start new game</button>
+</form><br>
+
+
+<div class="game-status" th:classappend="' ' + ${state.toString().toLowerCase()}">
+    Game state: <span th:text="${state}"/><br>
+    Score: <span th:text="${score}"/><br>
+    Moves: <span th:text="${move}"/>/<span th:text="${maxMoves}"/>
+</div>
+
+<div th:utext="${htmlField}"></div><br>
+
+
+<h2>Top scores</h2>
+<table class="scores">
+    <thead>
+    <tr>
+        <th>Player</th>
+        <th>Points</th>
+        <th>Played at</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="score: ${scores}">
+        <td th:text="${score.player}"></td>
+        <td th:text="${score.points}"></td>
+        <td th:text="${score.playedOn}"></td>
+    </tr>
+    </tbody>
+</table><br>
+
+<a href="/puzzle/rateandcomment">Rate and Comment</a><br><br>
+
+<div th:replace="fragments/fragments::footer"></div>
+
+</body>
+</html>

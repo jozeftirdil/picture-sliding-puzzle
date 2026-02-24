@@ -1,0 +1,15 @@
+Pri hre Picture Sliding Puzzle je pri generovaní herného poľa potrebné:
+
+	1. Na základe vstupu od hráča určujúceho náročnosť hry sa vygeneruje herné pole príslušnej veľkosti x*x.
+	2. Postupnosť čísel od 1 po x*x-1 náhodne zamiešame.
+	   Pomocou cyklu ju zapíšeme do 2D poľa dlaždíc do premennej number každej dlaždice, pričom posledná dlaždica má hodnotu premennej number null.
+
+Po každom ťahu v hre Picture Sliding Puzzle sa kontroluje, či je hra v stave SOLVED.
+
+	1. Hra je SOLVED, ak platí, že všetky dlaždice sú na základe premennej number zoradené vzostupne a posledná dlaždica má hodnotu null.
+	2. Ak hra nie je SOLVED, pokračuje sa ďalším ťahom hráča.
+
+Ťah hráča spočíva vo výbere dlaždice, s ktorou chce pohnúť.
+
+Posunutie dlaždice, len ak dlaždica je v stave COVERED, môže byť realizované metódou moveTile(int row, int column), ak dlaždica susedí s dlaždicou v stave EMPTY.
+V tom prípade si vybraná dlaždica vymení hodnotu premennej number s EMPTY dlaždicou, stav vybranej dlaždice sa nastaví na EMPTY a druhá dlaždica na stav COVERED.

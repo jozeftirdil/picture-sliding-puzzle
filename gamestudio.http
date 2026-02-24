@@ -1,0 +1,50 @@
+POST http://localhost:8080/api/score
+Content-Type: application/json
+
+{
+  "game": "PictureSlidingPuzzle",
+  "player": "Juraj",
+  "points": 480,
+  "playedOn": "2025-04-06T23:10:00"
+}
+
+###
+GET http://localhost:8080/api/score/PictureSlidingPuzzle
+
+
+
+###
+POST http://localhost:8080/api/rating
+Content-Type: application/json
+
+{
+  "game": "PictureSlidingPuzzle",
+  "player": "Juraj",
+  "rating": 1,
+  "ratedOn": "2025-04-06T23:10:00"
+}
+
+###
+GET http://localhost:8080/api/rating/PictureSlidingPuzzle/average
+
+
+
+###
+GET http://localhost:8080/api/rating/PictureSlidingPuzzle/Juraj
+
+
+
+###
+
+POST http://localhost:8080/api/comment
+Content-Type: application/json
+
+{
+  "game": "PictureSlidingPuzzle",
+  "player": "Juraj",
+  "comment": "Super!",
+  "commentedOn": "2025-04-06T23:10:00"
+}
+
+###
+GET http://localhost:8080/api/comment/PictureSlidingPuzzle

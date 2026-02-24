@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div th:fragment="header">
+  <h1>Welcome to <a href="/">Gamestudio</a>!</h1>
+
+  <span th:if="${@userController.logged}">
+    Logged as: <span th:text="${@userController.loggedUser.login}"/>
+    <a href="/logout">Logout</a><br/>
+  </span>
+
+  <span th:if="not ${@userController.logged}">
+    Not logged. Please <a href="/">login</a>.<br/>
+
+  </span>
+
+</div>
+
+<div th:fragment="footer">
+  <hr/>
+  This is Gamestudio! Developed at KPI FEI TUKE.
+  <img src="/images/kpi.png" class="footer-logo">
+</div>
+
+</html>
